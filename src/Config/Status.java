@@ -12,8 +12,14 @@ public class Status {
 		status = new ArrayList<Action>();
 	}
 
-	public int captuarStatus(Action a) {
-		return a.getStatus();
+	public void captuarStatus(Action a) {
+		status.add(a);
+	}
+	
+	public void mostraStatus() {
+		for(Action a : status)
+			captuarStatus(a);
+		System.out.print("");
 	}
 	
 
