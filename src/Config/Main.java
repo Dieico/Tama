@@ -1,13 +1,10 @@
 package Config;
 
-import java.util.TimerTask;
-
 public class Main {
 
-	public static void main(String[] args) {	
-		
-		TelaIncial janela = new TelaIncial();
-		
+	public static void main(String[] args) {
+
+//		TelaIncial janela = new TelaIncial();
 
 //		int delay = 5000; // delay de 5 seg.
 //		int interval = 1000; // intervalo de 1 seg.

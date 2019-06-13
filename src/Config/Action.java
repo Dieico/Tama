@@ -1,9 +1,6 @@
 package Config;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-public class Action implements Fuction {
+public class Action{
 	String nomedoIcon;
 	int status;
 	int valueAddition;
@@ -15,29 +12,15 @@ public class Action implements Fuction {
 		valueAddition = addition;
 		valueDecrease = decrease;
 	}
-	
-	@Override
-	public int decreaseStatus(Time b) {
-		
-		return 0;
+
+	public void additionStatus() {
+		status += valueAddition;
+		 System.out.print(status);
 	}
 
-	@Override
-	public int additionStatus(Botoes a) {
-		a.right.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-//				JOptionPane.showMessageDialog(Botoes.this, "Teste 2");
-				status +=valueAddition;
-			}
-		});
-		return 0;
-	}
-
-	@Override
-	public int modifyValueDecrease(Time b) {
-		// TODO Auto-generated method stub
-		return 0;
+	public void modifyValueDecrease(Time b) {
+		if (b.horapassadas() > 10)
+			valueDecrease = 2;
 	}
 
 	//////////////////// Gets e Sets//////////////////////////////

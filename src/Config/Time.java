@@ -4,6 +4,8 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Time {
 	LocalDate nascimento;
@@ -12,9 +14,6 @@ public class Time {
 	int descaso;
 
 	public Time() {
-		if (nascimento == null)
-			nascimento = LocalDate.now();
-
 	}
 
 	public int verificaIdade() {
@@ -26,33 +25,41 @@ public class Time {
 		return LocalTime.now();
 	}
 
-	public int horapassadas() {
-		ultimoAcesso = verificahora();
-		Duration horapassada = Duration.between(ultimoAcesso, LocalTime.now());
-		return (descaso = (int) (horapassada.getSeconds() / 60));
+	public int horapassadas() {		
+		return descaso = (int) (Duration.between(ultimoAcesso, LocalTime.now()).getSeconds());
+//		return (descaso = (int) (horapassada.toHours() / 60));
+	}
+
+	public LocalTime armazenaltimoAcesso() {
+		return ultimoAcesso = LocalTime.now();
+	}
+
+	public void decreaseStatus(Action b) {
+		int delay = 2000; // tempo de espera antes da 1ª execução da tarefa.
+		int interval = 3000; // intervalo no qual a tarefa será executada.
+		Timer timer = new Timer();
+		timer.scheduleAtFixedRate(new TimerTask() {
+			public void run() {
+				b.status -= b.valueDecrease;
+//				
+			}
+		}, delay, interval);
 	}
 
 	////////////////// Sets e Gets /////////////////
-	
+
 	public LocalDate getNascimento() {
 		return nascimento;
 	}
-	
+
 	public LocalTime getUltimoAcesso() {
 		return ultimoAcesso;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Time [nascimento=" + nascimento + ", dias=" + dias + ", ultimoAcesso=" + ultimoAcesso + ", descaso="
 				+ descaso + "]";
-	}
-
-	public static void main(String[] args) {
-		Time days = new Time();
-//		System.out.print(days.verificaIdade());		
-//		System.out.print(days.toString());
-		System.out.print(days.horapassadas());
 	}
 
 }

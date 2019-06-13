@@ -15,13 +15,11 @@ public class Status {
 	public void captuarStatus(Action a) {
 		status.add(a);
 	}
-	
+
 	public void mostraStatus() {
-		for(Action a : status)
-			captuarStatus(a);
-		System.out.print("");
+		for (Action a : status)
+			a.getStatus();
 	}
-	
 
 	public void setIdade(int idade) {
 		this.idade = idade;
