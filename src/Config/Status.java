@@ -2,6 +2,8 @@ package Config;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Status {
 	int idade;
@@ -11,6 +13,8 @@ public class Status {
 		idade = b.dias;
 		status = new ArrayList<Action>();
 	}
+	
+	
 
 	public void captuarStatus(Action a) {
 		status.add(a);

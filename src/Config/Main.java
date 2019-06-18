@@ -1,20 +1,38 @@
 package Config;
 
+import java.awt.EventQueue;
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class Main {
 
 	public static void main(String[] args) {
+		Tela carrega = new Tela();
+		carrega.getTempo().decreaseStatus(carrega.getComida());
+		carrega.getTempo().decreaseStatus(carrega.getSaude());
+		carrega.getTempo().decreaseStatus(carrega.getEmocional());
+		carrega.getTempo().decreaseStatus(carrega.getSono());
 
-//		TelaIncial janela = new TelaIncial();
+		Timer timer = new Timer();
+		timer.scheduleAtFixedRate(new TimerTask() {
+			public void run() {
 
-//		int delay = 5000; // delay de 5 seg.
-//		int interval = 1000; // intervalo de 1 seg.
-//		Timer timer = new Timer();
-//		timer.scheduleAtFixedRate(new TimerTask() {
-//			public void run() {
-//				//evento constante
-//			}
-//		}, delay, interval);
+				carrega.getStatusComida().setText("Fome: " + carrega.getComida().getStatus());
+				carrega.getStatusSaude().setText("Saude: " + carrega.getSaude().getStatus());
+				carrega.getStatusEmocao().setText("felicidade: " + carrega.getEmocional().getStatus());
+				carrega.getStatusSono().setText("Cansaço: " + carrega.getSono().getStatus());
+			}
+		}, 1000, 1000);
 
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+//				carrega.statusComida.setText(" Status de Fome " + Integer.toString(carrega.getComida().getStatus()));
+				try {
+					carrega.getFrame().setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
-
 }

@@ -1,7 +1,11 @@
 package Config;
 
-public class Action{
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
+public class Action {
 	String nomedoIcon;
+	boolean chaveIcon;
 	int status;
 	int valueAddition;
 	int valueDecrease;
@@ -11,16 +15,34 @@ public class Action{
 		this.status = status;
 		valueAddition = addition;
 		valueDecrease = decrease;
+		chaveIcon = false;
 	}
 
 	public void additionStatus() {
 		status += valueAddition;
-		 System.out.print(status);
+		System.out.print(status);
 	}
 
-	public void modifyValueDecrease(Time b) {
-		if (b.horapassadas() > 10)
-			valueDecrease = 2;
+//	private void modifyValueDecrease(Time b) {
+//		if (b.horapassadas() > 10)
+//			valueDecrease = 2;
+//	}
+
+	public void tradeIcon(Action a, JLabel b) {
+		ligaIcon();
+		if (a.chaveIcon == true)
+			b.setIcon(new ImageIcon(Tela.class.getResource("/imagens/play-button_ON.png")));
+		else
+			b.setIcon(new ImageIcon(Tela.class.getResource("/imagens/play-button.png")));
+
+	}
+
+	public boolean ligaIcon() {
+		if (chaveIcon == false)
+			return chaveIcon = true;
+		else
+			return chaveIcon = false;
+
 	}
 
 	//////////////////// Gets e Sets//////////////////////////////

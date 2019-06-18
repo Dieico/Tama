@@ -25,9 +25,8 @@ public class Time {
 		return LocalTime.now();
 	}
 
-	public int horapassadas() {		
+	public int horapassadas() {
 		return descaso = (int) (Duration.between(ultimoAcesso, LocalTime.now()).getSeconds());
-//		return (descaso = (int) (horapassada.toHours() / 60));
 	}
 
 	public LocalTime armazenaltimoAcesso() {
@@ -50,6 +49,30 @@ public class Time {
 
 	public LocalDate getNascimento() {
 		return nascimento;
+	}
+
+	public int getDias() {
+		return dias;
+	}
+
+	public void setDias(int dias) {
+		this.dias = dias;
+	}
+
+	public int getDescaso() {
+		return descaso;
+	}
+
+	public void setDescaso(int descaso) {
+		this.descaso = descaso;
+	}
+
+	public void setNascimento(LocalDate nascimento) {
+		this.nascimento = nascimento;
+	}
+
+	public void setUltimoAcesso(LocalTime ultimoAcesso) {
+		this.ultimoAcesso = ultimoAcesso;
 	}
 
 	public LocalTime getUltimoAcesso() {
